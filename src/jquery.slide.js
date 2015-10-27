@@ -1,4 +1,5 @@
-/** slide 
+'use strict';
+/** slide 滚屏
  * @author  heyman
  * @datatime 15.05.19
  * @example
@@ -15,7 +16,14 @@
  *     </ul>
  * </div>
  */
-void function($, plus_name) {
+ void function(factory){
+     if(typeof define === 'function'){
+         define(['jquery'] ,factory);
+     }else{
+         factory(jQuery);
+     }
+}(function($) {
+    var plus_name = 'slide';
     var $bd = $('body'),
     $win = $(window),
     fn = $.fn[plus_name] = function(opt) {
@@ -242,4 +250,4 @@ void function($, plus_name) {
         }
     };
 
-}(jQuery, 'slide');
+});
