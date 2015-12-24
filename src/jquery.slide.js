@@ -31,7 +31,7 @@
         // 往后的参数将为方法的参数
         if (typeof opt == 'string') {
             var args = [].slice.call(arguments ,1),
-                _opt = $.extend({}, fn.setting),
+                _opt = $.extend({}, fn.settings),
                 result;
             this.each(function(i, el) {
                 var data = new Kernel(el, _opt);
@@ -43,7 +43,7 @@
             if (result !== void 0) return result;
             return this;
         } else {
-            opt = $.extend({}, fn.setting, opt);
+            opt = $.extend({}, fn.settings, opt);
             return this.each(function(i, el) {
                 new Kernel(el, opt);
             });
@@ -90,7 +90,7 @@
             // 左右型
             'default' : function(now ,last){
                 var self = this,
-                opt = self.setting,
+                opt = self.settings,
                 active = opt.activeClass;
                 var width = last.$target.outerWidth(true);
                 last.$target.stop(true,true).animate({marginLeft:width*self.side,opacity:0},opt.time,function(){
@@ -105,7 +105,7 @@
             // 上下型
             updown : function(now ,last){
                 var self = this,
-                opt = self.setting,
+                opt = self.settings,
                 active = opt.activeClass;
                 var height = last.$target.outerHeight(true);
                 last.$target.stop(true,true).animate({marginTop:height*self.side},opt.time,function(){
@@ -133,7 +133,7 @@
         // 操作对象保存到元素中
         $element.data(plus_name, self);
 
-        self.setting = opt;
+        self.settings = opt;
 
         // 获取元素本身配置
         for (var k in opt) {
@@ -161,7 +161,7 @@
     Kernel.prototype.step = function(index) {
         if(!index) return;
         var self = this,
-        opt = self.setting,
+        opt = self.settings,
         _index = self.curIndex,
         $children = self.$children,
         length = $children.length,
@@ -194,7 +194,7 @@
     // 初始化
     Kernel.prototype.init = function() {
         var self = this,
-        opt = self.setting,
+        opt = self.settings,
         $parent = self.$parent,
         $children = self.$children,
         $element = self.$element;
