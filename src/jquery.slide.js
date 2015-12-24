@@ -51,7 +51,7 @@
     };
 
     // 默认配置
-    fn.setting = {
+    fn.settings = {
         // 点亮类
         activeClass :'active' ,
 
